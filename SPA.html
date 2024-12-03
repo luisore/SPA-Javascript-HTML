@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Task tracker</title>
+		<meta charset ="utf-8"/>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="SPA.js"></script>
+
+	</head>
+	<body>
+		<h1>Task tracker</h1>
+		<table class="table table-hover" id="tasks_table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Estimate (hours)</th>
+					<th>State</th>
+					<th>Edit/Delete</th>
+				</tr>			
+			</thead>
+			<tbody>
+			<!--
+				<tr id="row_1" class="task_row">
+					<td>digging</td>
+					<td>make a hole</td>
+					<td>12</td>
+					<td hidden_value="planned">Planned</td>
+					<td>
+						<button type="button" class="btn btn-success" onclick="EditRow('row_1')">Edit</button>
+						<button type="button" class="btn btn-danger" onclick="DeleteRow('row_1')">Delete</button>
+					</td>
+				</tr>
+				<tr id="row_2" class="task_row">
+					<td>get materials</td>
+					<td>get materials from...</td>
+					<td>6</td>
+					<td hidden_value="progress">in Progress</td>
+					<td>
+						<button type="button" class="btn btn-success" onclick="EditRow('row_2')">Edit</button>
+						<button type="button" class="btn btn-danger" onclick="DeleteRow('row_2')">Delete</button>
+					</td>
+				</tr>
+				<tr id="row_3" class="task_row">
+					<td>fill the hole</td>
+					<td>make a hole whole</td>
+					<td>3</td>
+					<td hidden_value="completed">Completed</td>
+					<td>
+						<button type="button" class="btn btn-success" onclick="EditRow('row_3')">Edit</button>
+						<button type="button" class="btn btn-danger" onclick="DeleteRow('row_3')">Delete</button>
+					</td>
+				</tr>
+				<tr id="row_4" class="task_row">
+					<td>talk to manager</td>
+					<td>ask questions and...</td>
+					<td>1</td>
+					<td hidden_value="planned">Planned</td>
+					<td>
+						<button type="button" class="btn btn-success" onclick="EditRow('row_4')">Edit</button>
+						<button type="button" class="btn btn-danger" onclick="DeleteRow('row_4')">Delete</button>
+					</td>
+				</tr>
+			-->
+				
+
+				<tr id="tr_inputs">
+					<td><input id="name_input" type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1"></td>
+					<td><input id="description_input" type="text" class="form-control" placeholder="Description" aria-label="Description" aria-describedby="basic-addon1"></td>
+					<td><input id="estimate_input" type="number" class="form-control" placeholder="Estimate" aria-label="Estimate" aria-describedby="basic-addon1"></td>
+					<td>
+						<div class="input-group mb-3">
+						  <select id="status_input" class="custom-select" id="inputGroupSelect01">
+						    <option value="" selected>Choose...</option>
+						    <option value="planned">Planned</option>
+						    <option value="progress">in Progress</option>
+						    <option value="completed">Completed</option>
+						  </select>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<button id="add_task_button" type="button" class="btn btn-primary btn-lg btn-block" onclick="AddNewTask()">Submit Task</button>
+
+		<h2>Task totals</h2>
+		<table class="table table-hover">
+		  <thead>
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">Status</th>
+		      <th scope="col">Stimate</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <th scope="row">1</th>
+		      <td>Planned</td>
+		      <td id="planned_hours">0</td>
+		    </tr>
+		    <tr>
+		      <th scope="row">2</th>
+		      <td>in Progress</td>
+		      <td id="progress_hours">0</td>
+		    </tr>
+		    <tr>
+		      <th scope="row">3</th>
+		      <td>Completed</td>
+		      <td id="completed_hours">0</td>
+		    </tr>
+		  </tbody>
+		</table>
+		<script> UpdateTotals('planned'); UpdateTotals('progress'); UpdateTotals('completed');</script>
+
+
+	</body>
+</html>
